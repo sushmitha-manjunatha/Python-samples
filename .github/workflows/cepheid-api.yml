@@ -16,8 +16,8 @@ jobs:
       with:
         python-version: '3.11'
         
-    - name: Generate API.html from Cepheid API.py
-      run: python "Cepheid API.py"
+    - name: Generate API.html from Cepheid API-html.py
+      run: python "Cepheid API-html.py"
       
     - name: Upload API.html artifact
       uses: actions/upload-artifact@v4
