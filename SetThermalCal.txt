@@ -1,0 +1,19 @@
+SetThermalCal
+void SetThermalCal(int iCtrl1, int iProbe1, int iCtrl2, int iProbe2);
+Sets the thermal calibration parameters in Shadow EEPROM.
+WriteEEPROM() must be called to make this setting permanent.
+
+Parameters:
+iCtrl1 - The first control temperature (in 100ths of degree Celsius). This is the setpoint temperature at thermal calibration time.
+iProbe1 - The thermal-meter reading (in 100ths of degree Celsius) when the module is at setpoint iCtrl1.
+iCtrl2 - The second control temperature (in 100ths of degree Celsius). This is the setpoint temperature at thermal calibration time.
+iProbe2 - The thermal-meter reading (in 100ths of degree Celsius) when the module is at setpoint iCtrl2.
+
+Notes
+When SetThermalCal() is called, the calender date (taken from the PC's clock) is also written to Shadow EEPROM.
+Setting all four parameters to zero will turn thermal calibration off.
+Example
+SetThermalCal(2500, 2480, 8000, 7980);
+This sets the thermal calibration parameters to indicate that when the module was at 25.00°C, the thermal meter read 24.80°C, and when the module was at 80.00°C, the thermal meter read 79.80°C.
+This indicates a thermal meter that reads 0.20°C low across the range from 25.00°C to 80.00°C.  After calling this function, WriteEEPROM() must be called to make the setting permanent.
+See Also WriteEEPROM, GetThermalCal 
